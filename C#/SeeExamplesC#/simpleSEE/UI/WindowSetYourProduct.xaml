@@ -1,0 +1,87 @@
+﻿<Window x:Class="simpleSEE.UI.WindowSetYourProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowSetYourProduct" 
+        Height="440" Width="660" WindowStartupLocation="CenterOwner" Icon="/simpleSEE;component/images/akeo.ico">
+    <Grid x:Name="grid_main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid_decoration" Margin="0" Grid.Row="0" Grid.RowSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" Source="/simpleSEE;component/images/skillpro-logo-1072x222.jpg" />
+            <Image Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" Source="/simpleSEE;component/images/Logo Akéo 2015 HD.jpg" />
+
+        </Grid>
+        <Grid x:Name="grid_content" Margin="0" Grid.Row="1" Grid.RowSpan="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="grid_listbox_datagrid" Grid.Row="0" Grid.RowSpan="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="200*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="250*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center"> Available Products</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center"> Current Products Condition (products and quantities)</TextBlock>
+
+                <ListBox x:Name="lb_list" Margin="10" Grid.ColumnSpan="1" Grid.Column="0" ItemsSource="{Binding ListBoxProductsNamesAvailable}" Grid.RowSpan="1" Grid.Row="1"/>
+                <Grid x:Name="grid_left_right" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="100*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="1" x:Name="bt_availableToSelected" Content=">" FontWeight="Bold" FontSize="20"  Click="bt_availableToSelected_Click"/>
+                    <Button Grid.Row="3" x:Name="bt_selectedToAvailable" Content="&lt;" FontWeight="Bold" FontSize="20" Click="bt_selectedToAvailable_Click"/>
+                </Grid>
+                <DataGrid x:Name="dg_currentProductAndQuantity"  Grid.Column="2" Grid.ColumnSpan="1" Margin="10" ItemsSource="{Binding DataGridSelectedProductsAndQuantity}" IsManipulationEnabled="True" IsReadOnly="False" Grid.RowSpan="1" Grid.Row="1" SelectionChanged="dg_currentProductAndQuantity_SelectionChanged">
+                </DataGrid>
+
+            </Grid>
+            <Grid Grid.RowSpan="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="250*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tb_productName" Grid.Column="0" Margin="5"  />
+                    <TextBox x:Name="tb_Quantity" Grid.Column="1" Margin="5"  />
+                    <Button x:Name="bt_add" Content="+" Grid.Column="2" Margin="10" FontWeight="Bold" FontSize="20" Click="bt_add_Click"/>
+                </Grid>
+
+
+            </Grid>
+            <Grid x:Name="grid_buttons" Grid.Row="2" Grid.RowSpan="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="bt_cancel" Content="cancel" Grid.Column="0" Grid.ColumnSpan="1" Margin="5" Click="bt_cancel_Click" />
+                <Button x:Name="bt_setConfiguration" Content="set current products" Grid.Column="2" Grid.ColumnSpan="1" Margin="5" Click="bt_setProduct_click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

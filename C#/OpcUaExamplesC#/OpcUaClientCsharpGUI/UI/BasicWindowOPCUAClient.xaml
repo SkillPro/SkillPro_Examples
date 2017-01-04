@@ -1,0 +1,153 @@
+﻿<Window x:Class="BasicWindowOPCUAClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BasicWindowOPCUAClient" Height="410.534" Width="721.708" Closing="Window_Closing" Icon="/OPCUA_csharp_client_midterm;component/images/akeo.ico">
+    <Grid x:Name="Grid">
+
+
+
+        <TabControl x:Name="tc_mainTabControl">
+            <TabItem Header="Connection">
+                <Grid x:Name="grid_connection_tab">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="208*"/>
+                        <ColumnDefinition Width="495*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- related to connection-->
+
+                    <GroupBox Header="Connection to server"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,10,10,178" HorizontalAlignment="Center" Width="683" Height="130" VerticalAlignment="Center" Grid.ColumnSpan="2" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_ServerURL" HorizontalAlignment="Center" Height="25" Margin="10,39,252,41" TextWrapping="Wrap" VerticalAlignment="Center" Width="409" Text="opc.tcp://localhost:51200" />
+                            <Button x:Name="bt_connect_play" Margin="424,23,187,25" Height="57" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60"  Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Click="bt_connect_play_Click" >
+                                <Image x:Name="img_bt_connect_play" Source="/OPCUA_csharp_client_midterm;component/images/start.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"  />
+                            </Button>
+
+                            <Button x:Name="bt_statusConnection" Margin="557,23,54,25" Height="57" VerticalAlignment="Center" HorizontalAlignment="Center" Width="60"  Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_statusConnection" Source="/OPCUA_csharp_client_midterm;component/images/mesure_off.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"  />
+                            </Button>
+
+                            <Label x:Name="lbl_ConnectionState" Content="disconnected" HorizontalAlignment="Center" Margin="538,75,10,0" VerticalAlignment="Center" Width="123" Height="30"/>
+
+                            <Label Content="Server's URL" HorizontalAlignment="Center" Height="30" Margin="10,9,497,66" VerticalAlignment="Center" Width="164"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="Namespaces"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,162,10,10" HorizontalAlignment="Center" Width="684" Height="179" VerticalAlignment="Center" Grid.ColumnSpan="2" Background="White">
+                        <Grid>
+                            <ListBox x:Name="lbx_Namspaces" HorizontalAlignment="Center" Height="153" Margin="0,0,10,0" VerticalAlignment="Center" Width="662"/>
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Read / write / monitor nodes">
+                <Grid>
+
+                    <!-- related to read / write / monitor nodes -->
+
+                    <!-- Node Id -->
+                    <GroupBox Header="Node Identifier"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,10,10,231" HorizontalAlignment="Center" Width="683" Height="77" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_NodeId" Text="put the identifier of the node here. Check box if node ID is numeric" HorizontalAlignment="Center" Height="32" Margin="10,10,165,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="496"/>
+                            <CheckBox Content="Node is numeric" x:Name="ck_nodeIsNumeric" HorizontalAlignment="Center" Margin="521,12,0,15" VerticalAlignment="Center" Height="24" Width="150"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Read-->
+                    <GroupBox Header="Read Value Of Node"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,92,257,149" HorizontalAlignment="Center" Width="436" Height="77" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <Button x:Name="btn_Read"  Click="btn_Read_Click"  HorizontalAlignment="Center" Height="52" Margin="363,0,10,0" VerticalAlignment="Center" Width="51" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_read" Source="/OPCUA_csharp_client_midterm;component/images/start.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="41"  />
+                            </Button>
+                            <TextBox x:Name="txb_ReadValue" Text="here is displayed the value of the node above" HorizontalAlignment="Center" Height="32" Margin="10,10,66,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="348"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Write-->
+                    <GroupBox Header="Write Value Of Node"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,174,257,67" HorizontalAlignment="Center" Width="436" Height="77" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_write" Text="here the value to be writen on the node above" HorizontalAlignment="Center"  Height="32" Margin="10,10,66,10" TextWrapping="Wrap" VerticalAlignment="Center"  Width="348"/>
+                            <Button x:Name="btn_write"   Click="btn_write_Click" HorizontalAlignment="Center" Height="52" Margin="363,0,10,0" VerticalAlignment="Center" Width="51" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_write" Source="/OPCUA_csharp_client_midterm;component/images/start.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="41"  />
+                            </Button>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Monitor -->
+                    <GroupBox Header="Monitor Value Of Node"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,268,258,7" HorizontalAlignment="Center" Width="436" Height="76" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_Monitoring" Text="here is monitored the value of the node above" HorizontalAlignment="Center"  Height="32" Margin="10,10,66,10" TextWrapping="Wrap" VerticalAlignment="Center"  Width="348"/>
+                            <Button x:Name="btn_Monitor" Click="btn_Monitor_Click" HorizontalAlignment="Center" Height="52" Margin="363,0,10,0" VerticalAlignment="Center" Width="51" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_monitor" Source="/OPCUA_csharp_client_midterm;component/images/start.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="41"  />
+                            </Button>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <!--Status Error Code-->
+                    <GroupBox Header="Status And Error Codes"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="462,108,10,10" HorizontalAlignment="Center" Width="232" Height="233" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <Button x:Name="btn_display_statusCode" HorizontalAlignment="Center" Height="89" Margin="58,51,69,67" VerticalAlignment="Center" Width="93" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_display_statusCode" Source="/OPCUA_csharp_client_midterm;component/images/Check_c.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Button>
+                            <TextBox x:Name="txb_ReadCode" HorizontalAlignment="Center" Height="26" Margin="10,171,11,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="199"/>
+                        </Grid>
+                    </GroupBox>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Call methods">
+                <Grid>
+                    <!-- Node ID -->
+                    <GroupBox Header="Node Identifier"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="10,10,10,231" HorizontalAlignment="Center" Width="683" Height="77" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_NodeId_callMethod" Text="put the identifier of the node here. Check box if node ID is numeric" HorizontalAlignment="Center" Height="32" Margin="10,10,165,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="496"/>
+                            <CheckBox Content="Node is numeric" x:Name="ck_nodeIsNumeric_callMethod" HorizontalAlignment="Center" Margin="521,12,0,15" VerticalAlignment="Center" Height="24" Width="150"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Method ID -->
+                    <GroupBox Header="Method Identifier"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="11,104,10,171" HorizontalAlignment="Center" Width="683" Height="76" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_methodId_callMethod" Text="put the identifier of the method here. Check box if ID is numeric" HorizontalAlignment="Center" Height="32" Margin="10,10,165,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="496"/>
+                            <CheckBox Content="Method is numeric" x:Name="ck_methodIsNumeric_callMethod" HorizontalAlignment="Center" Margin="521,12,0,15" VerticalAlignment="Center" Height="24" Width="150"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Input Parameters -->
+                    <GroupBox Header="Input Parameters"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="11,185,10,90" HorizontalAlignment="Center" Width="683" Height="76" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_inputParams_callMethod" Text="put the value of the input parameters (separed by ';' ) here" HorizontalAlignment="Center" Height="32" Margin="10,10,196,9" TextWrapping="Wrap" VerticalAlignment="Center" Width="465"/>
+                            <ComboBox x:Name="cb_inputParamType" HorizontalAlignment="Left" Margin="480,9,0,0" VerticalAlignment="Top" Width="125" Height="32">
+                                <ComboBoxItem Content="No input parameter" />
+                                <ComboBoxItem Content="String" />
+                                <ComboBoxItem Content="Float" />
+                            </ComboBox>
+                            <Button x:Name="btn_callMethod"  Click="btn_callMethod_Click"  HorizontalAlignment="Center" Height="52" Margin="610,0,10,-1" VerticalAlignment="Center" Width="51" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_callMethod" Source="/OPCUA_csharp_client_midterm;component/images/start.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Height="42" Width="41"  />
+                            </Button>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Output Parameters -->
+                    <GroupBox Header="Output Parameters"  BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" Margin="11,266,10,9" HorizontalAlignment="Center" Width="683" Height="76" VerticalAlignment="Center" Background="White">
+                        <Grid>
+                            <TextBox x:Name="txb_outputParams_callMethod" Text="here are displayed the values of the output parameters" HorizontalAlignment="Center" Height="32" Margin="10,10,165,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="496"/>
+                            <Button x:Name="btn_display_statusCode_callMethod" HorizontalAlignment="Center" Height="51" Margin="511,0,109,0" VerticalAlignment="Center" Width="51" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" >
+                                <Image x:Name="img_bt_display_statusCode_callMethod" Source="/OPCUA_csharp_client_midterm;component/images/Check_c.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Button>
+                            <TextBox x:Name="txb_statusCode_callMethod" Text="" HorizontalAlignment="Center" Height="32" Margin="567,9,0,10" TextWrapping="Wrap" VerticalAlignment="Center" Width="104"/>
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

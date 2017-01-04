@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="2.15" xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd" FileName="SimpleSEE.aml">
+	<AdditionalInformation AutomationMLVersion="2.0" />
+	<AdditionalInformation>
+		<WriterHeader>
+			<WriterName>unspecified</WriterName>
+			<WriterID>AutomationML Editor</WriterID>
+			<WriterVendor>unspecified</WriterVendor>
+			<WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+			<WriterVersion>3.0.0</WriterVersion>
+			<WriterRelease>unspecified</WriterRelease>
+			<LastWritingDateTime>unspecified</LastWritingDateTime>
+			<WriterProjectTitle>unspecified</WriterProjectTitle>
+			<WriterProjectID>unspecified</WriterProjectID>
+		</WriterHeader>
+	</AdditionalInformation>
+	<InstanceHierarchy Name="Configuration">
+		<InternalElement Name="SimpleAsset" ID="663147bf-75ed-4459-8b9a-33f9f8020982">
+			<Attribute Name="Default_Condition" AttributeDataType="xs:complexType">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Description>Default resource configuration</Description>
+					<Value>Default</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Description>Default product configuration</Description>
+					<Value>{"SimpleMaterial":100}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="MESCommType" AttributeDataType="xs:string">
+				<Value>OpcUa</Value>
+				<Attribute Name="uri" AttributeDataType="xs:string">
+					<Value>opc.tcp://141.21.46.60:51200</Value>
+				</Attribute>
+				<Attribute Name="nodeId" AttributeDataType="xs:string">
+					<Value>ns=;i=</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="ESCommType" AttributeDataType="xs:string">
+				<Value>OpcUa</Value>
+				<Attribute Name="uri" AttributeDataType="xs:string">
+					<Value></Value>
+				</Attribute>
+				<Attribute Name="nodeId" AttributeDataType="xs:string">
+					<Value>ns=;i=</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="AMSCommType" AttributeDataType="xs:string">
+				<Value>WebServices</Value>
+				<Attribute Name="uri" AttributeDataType="xs:string">
+					<Value>http://141.21.14.76:8080/amsservice/</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="SEEType" AttributeDataType="xs:string">
+				<Value>Simple</Value>
+				<Attribute Name="simulated" AttributeDataType="xs:string">
+					<Value>false</Value>
+				</Attribute>
+			</Attribute>
+			<InternalElement Name="SimpleAsset" ID="70e081bf-d5ed-40a4-a12d-b06be02d9237" RefBaseSystemUnitPath="14dd1727-b57c-4a9c-a241-7cb98e4d7576" />
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillExecutionEngine" />
+		</InternalElement>
+		<InternalElement Name="Factory" ID="e0b14c03-75b7-4d5e-89ed-e2b084e95bc7">
+			<Attribute Name="XCoordinate" Unit="cm" AttributeDataType="xs:double">
+				<Value>10.0</Value>
+			</Attribute>
+			<Attribute Name="YCoordinate" Unit="cm" AttributeDataType="xs:double">
+				<Value>10.0</Value>
+			</Attribute>
+			<Attribute Name="ZCoordinate" Unit="cm" AttributeDataType="xs:double">
+				<Value>0.0</Value>
+			</Attribute>
+			<Attribute Name="AssetLength" Unit="cm" AttributeDataType="xs:double">
+				<Value>1071.0</Value>
+			</Attribute>
+			<Attribute Name="AssetWidth" Unit="cm" AttributeDataType="xs:double">
+				<Value>891.0</Value>
+			</Attribute>
+			<Attribute Name="AssetHeight" Unit="cm" AttributeDataType="xs:double">
+				<Value>100.0</Value>
+			</Attribute>
+			<InternalElement Name="Products" ID="f859f0d1-14d5-42f2-b24b-3dfe33d7b27c">
+				<InternalElement Name="SimpleMaterial" ID="157f74cf-5ac2-4aae-b0ce-d0764b1c3f93">
+					<ExternalInterface Name="ProductionSkillInterface" ID="84121039-e5be-429c-9db6-714163812148" RefBaseClassPath="SkillProInterfaceClassLib/ProductionSkillConnector" />
+					<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillProProduct" />
+				</InternalElement>
+				<RoleRequirements RefBaseRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure/ProductStructure" />
+			</InternalElement>
+			<InternalElement Name="ProductionSkills" ID="c8a96a1f-1a2d-448f-ba51-87efc211c2a8">
+				<RoleRequirements RefBaseRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure/ProcessStructure" />
+			</InternalElement>
+			<InternalElement Name="SimpleAsset" ID="14dd1727-b57c-4a9c-a241-7cb98e4d7576">
+				<Attribute Name="XCoordinate" Unit="cm" AttributeDataType="xs:double">
+					<Value>0.0</Value>
+				</Attribute>
+				<Attribute Name="YCoordinate" Unit="cm" AttributeDataType="xs:double">
+					<Value>0.0</Value>
+				</Attribute>
+				<Attribute Name="ZCoordinate" Unit="cm" AttributeDataType="xs:double">
+					<Value>0.0</Value>
+				</Attribute>
+				<Attribute Name="AssetLength" Unit="cm" AttributeDataType="xs:double">
+					<Value>100.0</Value>
+				</Attribute>
+				<Attribute Name="AssetWidth" Unit="cm" AttributeDataType="xs:double">
+					<Value>100.0</Value>
+				</Attribute>
+				<Attribute Name="AssetHeight" Unit="cm" AttributeDataType="xs:double">
+					<Value>100.0</Value>
+				</Attribute>
+				<Attribute Name="CurrentState" AttributeDataType="xs:string">
+					<Value>In-configuration</Value>
+				</Attribute>
+				<InternalElement Name="Default" ID="345e3d50-a974-4d9d-9a5f-471faf1b2ecd">
+					<Attribute Name="Current Configuration" AttributeDataType="xs:boolean">
+						<Value>true</Value>
+					</Attribute>
+					<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceConfiguration" />
+				</InternalElement>
+				<InternalElement Name="ProductConfiguration" ID="eefa3f59-e7b7-40c9-a3ec-98a98b5eb31c">
+					<InternalElement Name="ProductQuantity" ID="ba115a41-d5cb-44c2-9db0-f9432547c7e0">
+						<Attribute Name="Quantity" AttributeDataType="xs:integer">
+							<Value>100</Value>
+						</Attribute>
+						<InternalElement Name="SimpleMaterial" ID="0ed1f8a3-60e3-4e63-8702-c64ffad596e2" RefBaseSystemUnitPath="157f74cf-5ac2-4aae-b0ce-d0764b1c3f93" />
+						<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ProductConfiguration/ProductQuantityGroup" />
+					</InternalElement>
+					<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ProductConfiguration" />
+				</InternalElement>
+				<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillProResource" />
+			</InternalElement>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillProResource/Enterprise" />
+		</InternalElement>
+	</InstanceHierarchy>
+	<InterfaceClassLib Name="AutomationMLInterfaceClassLib">
+		<Version>2.2.0</Version>
+		<InterfaceClass Name="AutomationMLBaseInterface">
+			<InterfaceClass Name="Order" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface">
+				<Attribute Name="Direction" AttributeDataType="xs:string" />
+			</InterfaceClass>
+			<InterfaceClass Name="PortConnector" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface" />
+			<InterfaceClass Name="InterlockingConnector" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface" />
+			<InterfaceClass Name="PPRConnector" />
+			<InterfaceClass Name="ExternalDataConnector">
+				<Attribute Name="refURI" AttributeDataType="xs:string" />
+				<InterfaceClass Name="COLLADAInterface" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface/ExternalDataConnector" />
+				<InterfaceClass Name="PLCopenXMLInterface" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface/ExternalDataConnector" />
+			</InterfaceClass>
+			<InterfaceClass Name="Communication">
+				<InterfaceClass Name="SignalInterface" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface/Communication" />
+			</InterfaceClass>
+		</InterfaceClass>
+	</InterfaceClassLib>
+	<InterfaceClassLib Name="SkillProInterfaceClassLib">
+		<InterfaceClass Name="ProductionSkillConnector" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface/PPRConnector" />
+	</InterfaceClassLib>
+	<RoleClassLib Name="SkillProRoleClassLib">
+		<RoleClass Name="TemplateSkill" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Process" />
+		<RoleClass Name="ResourceConfigurationType" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure" />
+		<RoleClass Name="ProductionSkill" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Process">
+			<Description>The ProductionSkill provides values for the parameters of the TemplateSkills. Instances which support this role, has to support the referenced process role also.</Description>
+			<ExternalInterface Name="InputProductInterface" ID="4dccc7e1-acad-4510-b908-ca1366afa6b9" RefBaseClassPath="SkillProInterfaceClassLib/ProductionSkillConnector" />
+			<ExternalInterface Name="OutputProductInterface" ID="3e089ef2-195f-4550-8e76-d093e40103f6" RefBaseClassPath="SkillProInterfaceClassLib/ProductionSkillConnector" />
+		</RoleClass>
+		<RoleClass Name="ExecutableSkill" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Process">
+			<Description>ExecutionSkill is a match of ProductionSkill and ResourceSkill.</Description>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string" />
+			<Attribute Name="Duration" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="ResourceExecutableSkill" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+		<RoleClass Name="SkillProProduct" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Product">
+			<ExternalInterface Name="ProductionSkillInterface" ID="4dccc7e1-acad-4510-b908-ca1366afa0b0" RefBaseClassPath="SkillProInterfaceClassLib/ProductionSkillConnector" />
+		</RoleClass>
+		<RoleClass Name="SkillProResource" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Resource">
+			<Attribute Name="CurrentState" AttributeDataType="xs:string" />
+			<RoleClass Name="Enterprise" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure/ResourceStructure" />
+		</RoleClass>
+		<RoleClass Name="ResourceSkill" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Process">
+			<Description>The ResourceSkill provides possible values for the parameters of the TemplateSkills. Instances which support this role, has to support the referenced process role also.</Description>
+		</RoleClass>
+		<RoleClass Name="ExecutableSkillResourcePrePostCondition" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+		<RoleClass Name="PrePostRequirement" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+		<RoleClass Name="ResourceSkillPreRequirement" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+		<RoleClass Name="ResourceSkillPostRequirement" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+		<RoleClass Name="ResourceConfiguration" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Facet">
+			<RoleClass Name="SkillPreConfiguration" RefBaseClassPath="SkillProRoleClassLib/ResourceConfiguration" />
+			<RoleClass Name="SkillPostConfiguration" RefBaseClassPath="SkillProRoleClassLib/ResourceConfiguration" />
+		</RoleClass>
+		<RoleClass Name="ProductConfiguration" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Facet">
+			<RoleClass Name="SkillPreProductConfiguration" RefBaseClassPath="SkillProRoleClassLib/ProductConfiguration" />
+			<RoleClass Name="SkillPostProductConfiguration" RefBaseClassPath="SkillProRoleClassLib/ProductConfiguration" />
+			<RoleClass Name="ProductQuantityGroup" RefBaseClassPath="SkillProRoleClassLib/ProductConfiguration">
+				<Attribute Name="Quantity" Unit="xs:integer" AttributeDataType="xs:string" />
+			</RoleClass>
+		</RoleClass>
+		<RoleClass Name="SkillExecutionEngine" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure/ResourceStructure">
+			<Attribute Name="Default_Condition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string" />
+				<Attribute Name="Product" AttributeDataType="xs:string" />
+			</Attribute>
+			<Attribute Name="MESCommType" AttributeDataType="xs:string">
+				<Attribute Name="uri" AttributeDataType="xs:string" />
+			</Attribute>
+			<Attribute Name="AMSCommType" AttributeDataType="xs:string">
+				<Attribute Name="uri" AttributeDataType="xs:string" />
+			</Attribute>
+		</RoleClass>
+	</RoleClassLib>
+	<RoleClassLib Name="AutomationMLBaseRoleClassLib">
+		<Version>2.2.0</Version>
+		<RoleClass Name="AutomationMLBaseRole">
+			<RoleClass Name="Group" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole">
+				<Attribute Name="AssociatedFacet" AttributeDataType="xs:string" />
+			</RoleClass>
+			<RoleClass Name="Facet" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+			<RoleClass Name="Port" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole">
+				<Attribute Name="Direction" AttributeDataType="xs:string" />
+				<Attribute Name="Cardinality" AttributeDataType="xs:string">
+					<Attribute Name="MinOccur" AttributeDataType="xs:string" />
+					<Attribute Name="MaxOccur" AttributeDataType="xs:string" />
+				</Attribute>
+				<Attribute Name="Category" AttributeDataType="xs:string" />
+				<ExternalInterface Name="ConnectionPoint" ID="9942bd9c-c19d-44e4-a197-11b9edf264e7" RefBaseClassPath="AutomationMLInterfaceClassLib/AutomationMLBaseInterface/PortConnector" />
+			</RoleClass>
+			<RoleClass Name="Resource" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+			<RoleClass Name="Product" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+			<RoleClass Name="Process" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+			<RoleClass Name="Structure" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole">
+				<RoleClass Name="ProductStructure" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure" />
+				<RoleClass Name="ProcessStructure" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure" />
+				<RoleClass Name="ResourceStructure" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Structure" />
+			</RoleClass>
+			<RoleClass Name="PropertySet" RefBaseClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole" />
+		</RoleClass>
+	</RoleClassLib>
+	<RoleClassLib Name="SimpleFinalScenarioRoleClassLib">
+		<RoleClass Name="Pick" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="PickRelease" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Place" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="QualityChecking" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="Packaging" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="PackagingHuman" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="MachinePackaging" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Weight" Unit="kg" AttributeDataType="xs:double" />
+			<Attribute Name="Type" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Moving" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="Printing" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="Operate" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="Waiting" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Duration" Unit="s" AttributeDataType="xs:double" />
+		</RoleClass>
+		<RoleClass Name="Soldering" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="ZoneTemperatures" AttributeDataType="xs:string" />
+			<Attribute Name="ConveyorSpeed" Unit="m/s" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Cutting" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="PCBPrinting" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="Milling" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="OperateMilling" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Instruction" AttributeDataType="xs:string" />
+			<Attribute Name="Figure" AttributeDataType="xs:string" />
+			<Attribute Name="Speed" Unit="rpm" AttributeDataType="xs:string" />
+			<Attribute Name="Depth" Unit="mm" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Load" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Unload" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Transport1D" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Goal" AttributeDataType="xs:integer" />
+			<Attribute Name="Speed" AttributeDataType="xs:integer" />
+		</RoleClass>
+		<RoleClass Name="Transport2D" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="Transport6D" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="TransportHuman" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Start" AttributeDataType="xs:string" />
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="RecognizeAndMove" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill" />
+		<RoleClass Name="RecognizeTransport6d" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Object" AttributeDataType="xs:string" />
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="RecognizeGrip" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+			<Attribute Name="Object" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Transport3DXYYaw" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Transport6DSpeed" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+			<Attribute Name="Products" AttributeDataType="xs:string" />
+			<Attribute Name="Speed" Unit="m/s" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="RecognizeMove6D" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Object" AttributeDataType="xs:string" />
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Move6D" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Move3DXYYaw" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Goal" AttributeDataType="xs:string" />
+		</RoleClass>
+		<RoleClass Name="Simple" RefBaseClassPath="SkillProRoleClassLib/TemplateSkill">
+			<Attribute Name="Text" AttributeDataType="xs:string" />
+		</RoleClass>
+	</RoleClassLib>
+</CAEXFile>

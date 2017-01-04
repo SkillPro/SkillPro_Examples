@@ -1,0 +1,39 @@
+﻿<Window x:Class="simpleSEE.UI.WindowSetYourConfiguration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowSetYourConfiguration"
+     Height="440" Width="460" WindowStartupLocation="CenterOwner" Icon="/simpleSEE;component/images/akeo.ico" Loaded="Window_Loaded">
+    <Grid x:Name="grid_main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid_decoration" Margin="0" Grid.Row="0" Grid.RowSpan="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" Source="/simpleSEE;component/images/skillpro-logo-1072x222.jpg" />
+            <Image Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" Source="/simpleSEE;component/images/Logo Akéo 2015 HD.jpg" />
+
+        </Grid>
+        <Grid x:Name="grid_content" Margin="0" Grid.Row="1" Grid.RowSpan="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="lb_list" Margin="10" Grid.RowSpan="1" Grid.Row="0" SelectionChanged="lb_list_SelectionChanged" MouseDown="lb_list_MouseDown" />
+            <TextBox x:Name="tb_textbox" Margin="10"  Grid.RowSpan="1" Grid.Row="1"/>
+            <Grid x:Name="grid_buttons" Grid.Row="2" Grid.RowSpan="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="bt_cancel" Content="cancel" Grid.Column="0" Grid.ColumnSpan="1" Margin="5" Click="bt_cancel_Click" />
+                <Button x:Name="bt_setConfiguration" Content="set current configuration" Grid.Column="2" Grid.ColumnSpan="1" Margin="5" Click="bt_setConfiguration_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

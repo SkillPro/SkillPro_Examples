@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile xsi:noNamespaceSchemaLocation="CAEX_ClassModel_V2.15.xsd" FileName="KR6-Skills.aml" SchemaVersion="2.15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Version>0.7</Version>
+	<AdditionalInformation AutomationMLVersion="2.0" />
+	<AdditionalInformation>
+		<WriterHeader>
+			<WriterName>Boris BOCQUET</WriterName>
+			<WriterID>
+			</WriterID>
+			<WriterVendor>AKEO PLUS SAS</WriterVendor>
+			<WriterVendorURL>
+			</WriterVendorURL>
+			<WriterVersion>1.0</WriterVersion>
+			<WriterRelease>
+			</WriterRelease>
+			<LastWritingDateTime>20.03.2014-10:40</LastWritingDateTime>
+			<WriterProjectTitle>SkillPro</WriterProjectTitle>
+			<WriterProjectID>
+			</WriterProjectID>
+		</WriterHeader>
+	</AdditionalInformation>
+	<AdditionalInformation>
+		<WriterHeader>
+			<WriterName>AutomationML Editor</WriterName>
+			<WriterID>916578CA-FE0D-474E-A4FC-9E1719892369</WriterID>
+			<WriterVendor>AutomationML e.V.</WriterVendor>
+			<WriterVendorURL>www.AutomationML.org</WriterVendorURL>
+			<WriterVersion>4.1.4</WriterVersion>
+			<WriterRelease>4.1.4.0</WriterRelease>
+			<LastWritingDateTime>24.03.2015 18:12:49</LastWritingDateTime>
+			<WriterProjectTitle>unspecified</WriterProjectTitle>
+			<WriterProjectID>unspecified</WriterProjectID>
+		</WriterHeader>
+	</AdditionalInformation>
+	<InstanceHierarchy Name="SkillPro-Catalogue">
+		<InternalElement Name="QualityCheck" ID="QualityCheck">
+			<Attribute Name="Default_Condition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="String">
+					<Description>This is the default configuration</Description>
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="String">
+					<Description>"I start whith no products"</Description>
+					<Value>{"PCBChecked" : 0 , "PCBSoldered" : 0 , "PCBChecked-NOK" : 0}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="MESCommType" AttributeDataType="String">
+				<Value>OpcUa</Value>
+				<Attribute Name="uri" AttributeDataType="String">
+					<Value>opc.tcp://localhost:51200</Value>
+				</Attribute>
+				<Attribute Name="nodeId" AttributeDataType="String">
+					<Value>n=2;i=0</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="AMSCommType" AttributeDataType="String">
+				<Value>WebServices</Value>
+				<Attribute Name="uri" AttributeDataType="String">
+					<Value>http://osaka05.fzi.de/amsservice/</Value>
+				</Attribute>
+			</Attribute>
+			<InternalElement Name="Camera" ID="{2acabea3-bfe0-45ec-8094-1524b4cb7072}">
+				<SupportedRoleClass RefRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Resource" />
+				<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillProResource">
+					<Attribute Name="Condition" />
+					<Attribute Name="CurrentState" />
+				</RoleRequirements>
+			</InternalElement>
+			<InternalElement Name="KukaTestSee" ID="c80c1759-4e63-42ee-bc1e-5a9b23dff23d">
+				<SupportedRoleClass RefRoleClassPath="AutomationMLBaseRoleClassLib/AutomationMLBaseRole/Resource" />
+				<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillProResource">
+					<Attribute Name="Condition" />
+					<Attribute Name="CurrentState" />
+				</RoleRequirements>
+			</InternalElement>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/SkillExecutionEngine" />
+		</InternalElement>
+		<InternalElement Name="REX_LoadSlave" ID="6a0cf6f5-e863-4b66-a8e8-3438933a284f">
+			<Attribute Name="ResourceId" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="Duration" Unit="sec" AttributeDataType="xs:integer">
+				<Value>10</Value>
+			</Attribute>
+			<Attribute Name="Slack" Unit="sec" AttributeDataType="xs:integer">
+				<Value>0</Value>
+			</Attribute>
+			<Attribute Name="Execution" AttributeDataType="xs:string">
+				<Attribute Name="Type" AttributeDataType="xs:string">
+					<Value>Load</Value>
+				</Attribute>
+				<Attribute Name="Data" AttributeDataType="xs:string"/>
+			</Attribute>
+			<Attribute Name="PreCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>["Neutral"]</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="PostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{}</Value>
+				</Attribute>
+			</Attribute>
+			<SupportedRoleClass RefRoleClassPath="SimpleFinalScenarioRoleClassLib/Load"/>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceExecutableSkill"/>
+		</InternalElement>
+
+		<InternalElement Name="REX_QualityChecking" ID="b73bf0be-9042-43e0-941e-cf4bffcad1cb">
+			<Attribute Name="ResourceId" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="Duration" Unit="sec" AttributeDataType="xs:integer">
+				<Value>11</Value>
+			</Attribute>
+			<Attribute Name="Slack" Unit="sec" AttributeDataType="xs:integer">
+				<Value>0</Value>
+			</Attribute>
+			<Attribute Name="Execution" AttributeDataType="xs:string">
+				<Attribute Name="Type" AttributeDataType="xs:string">
+					<Value>QualityChecking</Value>
+				</Attribute>
+				<Attribute Name="Data" AttributeDataType="xs:string"/>
+			</Attribute>
+			<Attribute Name="PreCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>["Neutral"]</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBSoldered":[["&gt;=",1],["&lt;=",65536]],"PCBChecked":[["&gt;=",0],["&lt;=",65535]]}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="PostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBSoldered":-1,"PCBChecked":1}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="AltPostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBSoldered":-1,"PCBChecked-NOK":1}</Value>
+				</Attribute>
+			</Attribute>			
+			<SupportedRoleClass RefRoleClassPath="SimpleFinalScenarioRoleClassLib/QualityChecking"/>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceExecutableSkill"/>
+		</InternalElement>
+
+		<InternalElement Name="REX_Unload" ID="f76cffab-794f-452b-8ac8-f549abe8f52b">
+			<Attribute Name="ResourceId" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="Duration" Unit="sec" AttributeDataType="xs:integer">
+				<Value>6</Value>
+			</Attribute>
+			<Attribute Name="Slack" Unit="sec" AttributeDataType="xs:integer">
+				<Value>0</Value>
+			</Attribute>
+			<Attribute Name="Execution" AttributeDataType="xs:string">
+				<Attribute Name="Type" AttributeDataType="xs:string">
+					<Value>Unload</Value>
+				</Attribute>
+				<Attribute Name="Data" AttributeDataType="xs:string"/>
+			</Attribute>
+			<Attribute Name="PreCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>["Neutral"]</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBChecked":[["&gt;=",1],["&lt;=",65536]]}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="PostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBChecked":-1}</Value>
+				</Attribute>
+			</Attribute>
+			<SupportedRoleClass RefRoleClassPath="SimpleFinalScenarioRoleClassLib/Unload"/>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceExecutableSkill"/>
+		</InternalElement>
+
+		<InternalElement Name="REX_Unload" ID="2bbc5ede-d2ed-406a-a773-1a56d4d08c63">
+			<Attribute Name="ResourceId" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="Duration" Unit="sec" AttributeDataType="xs:integer">
+				<Value>12</Value>
+			</Attribute>
+			<Attribute Name="Slack" Unit="sec" AttributeDataType="xs:integer">
+				<Value>0</Value>
+			</Attribute>
+			<Attribute Name="Execution" AttributeDataType="xs:string">
+				<Attribute Name="Type" AttributeDataType="xs:string">
+					<Value>Unload</Value>
+				</Attribute>
+				<Attribute Name="Data" AttributeDataType="xs:string"/>
+			</Attribute>
+			<Attribute Name="PreCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>["Neutral"]</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBChecked":[["&gt;=",1],["&lt;=",65536]]}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="PostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBChecked":-1}</Value>
+				</Attribute>
+			</Attribute>
+			<SupportedRoleClass RefRoleClassPath="SimpleFinalScenarioRoleClassLib/Unload"/>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceExecutableSkill"/>
+		</InternalElement>
+
+		<InternalElement Name="REX_Unload" ID="43c89a70-7c5b-4ace-85fb-414385ba1f55">
+			<Attribute Name="ResourceId" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="Duration" Unit="sec" AttributeDataType="xs:integer">
+				<Value>7</Value>
+			</Attribute>
+			<Attribute Name="Slack" Unit="sec" AttributeDataType="xs:integer">
+				<Value>0</Value>
+			</Attribute>
+			<Attribute Name="Execution" AttributeDataType="xs:string">
+				<Attribute Name="Type" AttributeDataType="xs:string">
+					<Value>Unload</Value>
+				</Attribute>
+				<Attribute Name="Data" AttributeDataType="xs:string"/>
+			</Attribute>
+			<Attribute Name="PreCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>["Neutral"]</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="PostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{}</Value>
+				</Attribute>
+			</Attribute>
+			<SupportedRoleClass RefRoleClassPath="SimpleFinalScenarioRoleClassLib/Unload"/>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceExecutableSkill"/>
+		</InternalElement>
+
+		<InternalElement Name="REX_LoadSlave" ID="49f277f8-ae8e-463f-8829-184e04712f41">
+			<Attribute Name="ResourceId" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="ResponsibleSEE" AttributeDataType="xs:string">
+				<Value>QualityCheck</Value>
+			</Attribute>
+			<Attribute Name="Duration" Unit="sec" AttributeDataType="xs:integer">
+				<Value>4</Value>
+			</Attribute>
+			<Attribute Name="Slack" Unit="sec" AttributeDataType="xs:integer">
+				<Value>0</Value>
+			</Attribute>
+			<Attribute Name="Execution" AttributeDataType="xs:string">
+				<Attribute Name="Type" AttributeDataType="xs:string">
+					<Value>Load</Value>
+				</Attribute>
+				<Attribute Name="Data" AttributeDataType="xs:string"/>
+			</Attribute>
+			<Attribute Name="PreCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>["Neutral"]</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBSoldered":[["&gt;=",0],["&lt;=",65535]]}</Value>
+				</Attribute>
+			</Attribute>
+			<Attribute Name="PostCondition" AttributeDataType="xs:string">
+				<Attribute Name="Configuration" AttributeDataType="xs:string">
+					<Value>Neutral</Value>
+				</Attribute>
+				<Attribute Name="Product" AttributeDataType="xs:string">
+					<Value>{"PCBSoldered":1}</Value>
+				</Attribute>
+			</Attribute>
+			<SupportedRoleClass RefRoleClassPath="SimpleFinalScenarioRoleClassLib/Load"/>
+			<RoleRequirements RefBaseRoleClassPath="SkillProRoleClassLib/ResourceExecutableSkill"/>
+		</InternalElement>
+
+	</InstanceHierarchy>
+</CAEXFile>

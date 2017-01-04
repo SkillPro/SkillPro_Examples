@@ -1,0 +1,243 @@
+﻿<Window x:Class="simpleSEE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AkeoPlus SkillPro SEE"
+        Width="1533" Height="849"  Icon="images/akeo.ico" Closing="Window_Closing" Loaded="Window_Loaded" >
+
+    <Grid x:Name="grid_main_grid_with_menu" Margin="0,0,0,0">
+        <Menu Height="30" VerticalAlignment="Top" x:Name="menu" RenderTransformOrigin="0,0" FontWeight="Light" Foreground="#FFECECEC" Grid.ColumnSpan="3">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF6F6F6" Offset="0.209"/>
+                    <GradientStop Color="#FFEAE8E8"/>
+                    <GradientStop Color="#FFDCD9D9" Offset="0.851"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+
+            <MenuItem Header="File" Height="30" Width="54" FontWeight="Normal" FontSize="16" HorizontalContentAlignment="Center" x:Name="param" Foreground="#FF436EFF" Padding="10,2,8,2">
+                <MenuItem Header="Login" x:Name="bt_login"  Height="30" Width="200" FontSize="16" Background="#FFECF4F5" HorizontalContentAlignment="Right" Foreground="Black" Click="bt_login_Click"/>
+                <MenuItem x:Name="bt_quit" Header="Exit" Height="30" Width="200" FontSize="16"  Background="#FFECF4F5" HorizontalContentAlignment="Right" Foreground="Black"  Click="bt_quit_Click"/>
+            </MenuItem>
+
+            <MenuItem x:Name="bt_adminstration" Header="Administration" IsEnabled="False" FontSize="16" Width="150" Height="30" FontWeight="Normal" HorizontalContentAlignment="Center" HorizontalAlignment="Center"  Margin="0,0,0,0" Background="{x:Null}" Foreground="Gray">
+                <MenuItem Header="call OPC-UA" Foreground="Black" Background="#FFECF4F5" Width="300" Height="30">
+                    <CheckBox x:Name="ckb_displaySkillNames" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Display Skill Names rather than Skill Ids" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" ></CheckBox>    
+                    <ListBox x:Name="lb_CallableSkill" ItemsSource="{Binding CallableSkills}"  Width="600" Height="400" SelectionChanged="lb_CallableSkill_SelectionChanged" />
+                    <Grid x:Name="grid_timestamp" Margin="0,0,0,0" Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Text="Ms to wait before execution (timestamp)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox x:Name="tb_MsTimestamp" Grid.Column="1" Grid.ColumnSpan="1" Margin="10,5,10,5" Text="0" TextAlignment="Center" />
+                    </Grid>
+                </MenuItem>
+                <MenuItem Header="Refresh Callable skills" x:Name="bt_reloadCollableSkills" Foreground="Black" Background="#FFECF4F5" Width="300" Height="30" Click="bt_reloadCallableSkills_Click"/>
+                <MenuItem Header="Set current configuration" x:Name="bt_setCurrentConfiguration" Foreground="Black" Background="#FFECF4F5" Width="300" Height="30" Click="bt_setCurrentConfiguration_Click"/>
+                <MenuItem Header="Set current product" x:Name="bt_setCurrentProduct" Foreground="Black" Background="#FFECF4F5" Width="300" Height="30" Click="bt_setCurrentProduct_Click"/>
+                <MenuItem Header="Retrieve all skills from AMS" x:Name="bt_retrieveAllSkillsFromAms" Foreground="Black" Background="#FFECF4F5" Width="300" Height="30" Click="bt_retrieveAllSkillsFromAms_Click"/>
+                
+            </MenuItem>
+
+            <MenuItem Header="?" FontSize="16" Width="26" Height="30" FontWeight="Normal" HorizontalContentAlignment="Center" HorizontalAlignment="Center" x:Name="help" Margin="0,0,0,0" Background="{x:Null}" Foreground="#FF436EFF"/>
+            <MenuItem>
+
+            </MenuItem>
+            <MenuItem Header="|" x:Name="separator" Visibility="Hidden" IsEnabled="False"  Height="30" Margin="0,4,0,0" />
+        </Menu>
+
+        <Grid x:Name="grid_main_grid" Margin="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="250*"/>
+                <ColumnDefinition Width="200*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- Left Pannel = decoration AKEOPLUS-->
+            <Grid x:Name="grid_left_pannel" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Grid.Column="0" Grid.ColumnSpan="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="250*"/>
+                </Grid.RowDefinitions>
+
+                <Image Margin="10" Source="images/Logo Akéo 2015 HD.jpg" HorizontalAlignment="Left" MouseDown="Akeo_Image_MouseDown"/>
+                <Image Margin="10" Source="images/image1.png" Grid.Row="1" Grid.RowSpan="1" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <!--Middle Pannel-->
+            <Grid x:Name="grid_middlePannel"  Visibility="Visible" Margin="0" Grid.Column="1" Grid.ColumnSpan="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="400*"/>
+                </Grid.RowDefinitions>
+
+
+                <!--Decoration SkillPro-->
+                <Grid x:Name="grid_decorationSkillPro" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" Margin="0">
+                    <Image Margin="20" Source="images/skillpro-logo-1072x222.jpg" MouseDown="SkillPro_Image_MouseDown" />
+                </Grid>
+
+                <!--Debugging playground-->
+                <Grid x:Name="grid_debugging"  Margin="0" Grid.Row="1">
+
+                    <GroupBox Visibility="Visible" x:Name="gb_Debugging" Header="Your SEE" Margin="10" BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF">
+                        <Grid x:Name="grid_gb_Debugging">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid x:Name="grid_buttons" Grid.Row="1" Grid.RowSpan="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="bt_instanciateSee" Content="Instanciate SEE" Click="bt_instanciateSee_Click" Margin="5" Grid.ColumnSpan="1" Grid.Column="0" />
+                                <Button x:Name="bt_disposeSee" Content="Dispose SEE" Click="bt_disposeSee_Click" Margin="5" Grid.ColumnSpan="1" Grid.Column="1"/>
+                                <Button x:Name="bt_updateExternalTriggers" Content="Update Ext Triggers" Click="bt_updateExternalTriggers_Click" Margin="5" Grid.ColumnSpan="1" Grid.Column="2"/>
+
+                            </Grid>
+
+                            <TextBlock TextWrapping="Wrap"  x:Name="lbl_middlePannel" Margin="50" FontSize="20" Visibility="Hidden" Foreground="Black" Text=""  />
+
+                            <Grid x:Name="grid_dataSee" Visibility="Visible">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid x:Name="grid_file" Grid.Row="0" Grid.Column="0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50*"/>
+                                        <ColumnDefinition Width="150*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0" Source="images/Folder-Open.png" MouseDown="OpenFile_MouseDown"/>
+                                    <Label x:Name="lbl_AMLFile" Grid.Row="0" Grid.Column="1" Content="SEE AML file =" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10" />
+                                </Grid>
+
+                                <TextBox Grid.Row="0" Text="AmlFile.aml"  Grid.Column="1" x:Name="tb_AmlFile" TextWrapping="Wrap"  Margin="10"/>
+
+                                <Label Content="SEE Name =" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
+                                <Label Grid.Row="1" Grid.Column="1" x:Name="lbl_seeName"  Content="" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" Content="SEE Id =" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                                <Label Grid.Row="2"  Grid.Column="1" x:Name="lbl_seeId" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+
+                                <Label Grid.Row="3" Grid.Column="0" Content="AMS service URI =" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                                <Label Grid.Row="3" Grid.Column="1" x:Name="lbl_AmsUri" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                                <Label Grid.Row="4" Grid.Column="0" Content="OPC-UA server URL =" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                                <Label Grid.Row="4"  Grid.Column="1" x:Name="lbl_OpcuaUrl" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                                <Label Grid.Row="5" Grid.Column="0" Content="SEE Node Id (put 0 to create) =" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                                <Label Grid.Row="5"  Grid.Column="1" x:Name="lbl_seeNodeId" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                                <Label Grid.Row="6" Grid.Column="0" Content="OPC-UA spacename index =" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                                <Label Grid.Row="6" Grid.Column="1" x:Name="lbl_spacenameIndex" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                                <Grid x:Name="grid_radioButtonSee" Grid.Row="7" Grid.ColumnSpan="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100*"/>
+                                        <ColumnDefinition Width="100*"/>
+                                        <ColumnDefinition Width="100*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <RadioButton x:Name="rb_PopupWindowSee" Grid.Column="0" Content="PopUp Window SEE" IsChecked="True" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <RadioButton x:Name="rb_helloWorldSee" Grid.Column="1" Content="Hello world SEE" IsChecked="False" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <RadioButton x:Name="rb_helloWorldAndQuestionSee" Grid.Column="2" IsChecked="False" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                        <TextBlock TextWrapping="Wrap">
+                                            Hello world and Questions SEE
+                                        </TextBlock>
+                                    </RadioButton>
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+
+                    </GroupBox>
+                </Grid>
+
+
+            </Grid>
+
+            <!--Right Pannel-->
+            <Grid x:Name="grid_rightPannel" Margin="0" Grid.ColumnSpan="1" Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="511*"/>
+                    <RowDefinition Height="311*"/>
+                </Grid.RowDefinitions>
+
+
+                <GroupBox Grid.Row="0" Grid.RowSpan="1" x:Name="gb_commonToAllSee" Header="Informations common to all SEEs" Margin="10" BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="100*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="grid_status_OPCUA"  Grid.Row="0" Grid.RowSpan="1" Visibility="Visible" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="300*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Fill="Red" Stroke="Black" RadiusY="19.5" RadiusX="19.5" Grid.ColumnSpan="2"/>
+                            <Image x:Name="img_status_connectionOPCUA" Grid.Column="0" Grid.ColumnSpan="1" Source="images/mesure_off.png" Margin="10" />
+                            <Label x:Name="lbl_status_connectionOPCUA" Grid.Column="1" Grid.ColumnSpan="1" Content="OPC-UA client disconnected" Margin="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                        </Grid>
+                        <Grid  x:Name="grid_SEE_STATE"  Grid.Row="1" Grid.RowSpan="1" Visibility="Visible" Margin="10">
+                            <Rectangle Fill="#FFF4F4F5" Stroke="Black" RadiusY="19.5" RadiusX="19.5"/>
+                            <Label x:Name="lbl_SEE_SATE" Content="SEE STATE : " VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                        </Grid>
+                        <Grid x:Name="grid_call_OPCUA"  Grid.Row="2" Grid.RowSpan="1" Visibility="Visible" Margin="10" MouseEnter="grid_call_OPCUA_MouseEnter" MouseLeave="grid_call_OPCUA_MouseLeave">
+                            <Rectangle Fill="#FFF4F4F5" Stroke="Black" RadiusY="19.5" RadiusX="19.5"/>
+                            <Label x:Name="lbl_call_OPCUA" Content="Last call : No call" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20"/>
+                        </Grid>
+                        <Grid x:Name="grid_Last_Exception"  Grid.Row="3" Grid.RowSpan="1" Visibility="Visible" Margin="10" MouseEnter="grid_Last_Exception_MouseEnter" MouseLeave="grid_Last_Exception_MouseLeave">
+                            <Rectangle Fill="#FFF4F4F5" Stroke="Black" RadiusY="19.5" RadiusX="19.5"/>
+                            <Label x:Name="lbl_Last_Exception" Content="Last exception :" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" MouseDown="lbl_Last_Exception_MouseDown"/>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox x:Name="gb_ext_triggers" Grid.Row="1" Grid.RowSpan="1" Header="External Triggers" Margin="10" BorderBrush="#FF4EA8DE" FontSize="16" Foreground="#FF436EFF">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="100*"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="CONFIGURED" Visibility="Hidden" x:Name="bt_ext_configured" Margin="10" Grid.Row="0" Grid.Column="0" Click="bt_ext_configured_Click" Grid.ColumnSpan="1"/>
+                        <Button Content="SHUTDOWN" Visibility="Hidden" x:Name="bt_ext_shutdown" Margin="10" Grid.Row="1" Grid.Column="0" Click="bt_ext_shutdown_Click" Grid.ColumnSpan="1"/>
+                        <Button Content="RECOVER" Visibility="Hidden" x:Name="bt_ext_recover" Margin="10" Grid.Row="2" Grid.Column="0" Click="bt_ext_recover_Click" Grid.ColumnSpan="1"/>
+                        <Button Content="{Binding PauseResumeButtonName}" Visibility="Hidden" x:Name="bt_PauseResumeExe" Margin="10" Grid.Row="0" Grid.Column="1" Click="bt_PauseResumeExe_Click" Grid.ColumnSpan="1"/>
+                        <Button Content="CLEAR QUEUED SKILL" Visibility="Hidden" x:Name="bt_ClearQueuedSkill" Margin="10" Grid.Row="1" Grid.Column="1" Click="bt_ClearQueuedSkill_Click" Grid.ColumnSpan="1"/>
+                        <Button Content="(EMERGENCY) STOP" Visibility="Hidden" x:Name="bt_emercencyStop" Margin="10" Grid.Row="2" Grid.Column="1" Click="bt_emercencyStop_Click" Grid.ColumnSpan="1" Background="#FFE8FF00" Foreground="Red" FontWeight="Bold"/>
+
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

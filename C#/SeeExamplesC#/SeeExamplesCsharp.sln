@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simpleSEE", "simpleSEE\simpleSEE.csproj", "{4599E70C-0F8A-43ED-83D9-36DB51B36611}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8174E8AE-F039-42E5-B49C-C83408191E07}"
+	ProjectSection(SolutionItems) = preProject
+		default.doxygen = default.doxygen
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4599E70C-0F8A-43ED-83D9-36DB51B36611}.Debug|x64.ActiveCfg = Debug|x64
+		{4599E70C-0F8A-43ED-83D9-36DB51B36611}.Debug|x64.Build.0 = Debug|x64
+		{4599E70C-0F8A-43ED-83D9-36DB51B36611}.Release|x64.ActiveCfg = Release|x64
+		{4599E70C-0F8A-43ED-83D9-36DB51B36611}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
